@@ -41,7 +41,7 @@ text = st.text_area("Enter Your Review")
 predict = st.button("Predict")
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-classifier = pipeline('text-classification', model='tinybert-sentiment-analysis', device=device)
+classifier = pipeline('text-classification', model=local_path, device=device)
 if predict:
     with st.spinner("Predicting..."):
         output = classifier(text)
